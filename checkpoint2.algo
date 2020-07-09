@@ -1,0 +1,54 @@
+ALGORITHM Linear
+VAR
+   tab1 : ARRAY_OF INTEGER[100];
+   tab2 : ARRAY_OF INTEGER[100];
+   i , sum , j : INTEGER ;
+   existe : BOOLEAN ;
+   counter : INTEGER ;
+
+BEGIN
+sum := 0 ;
+counter := 0
+ FOR i FROM 0 TO tab1.length-1 STEP 1  DO
+ FOR j FROM 0 TO tab2.length-1 STEP 1  DO
+     IF (tab1[i]<>tab2[j]) THEN
+     counter = counter + 1 ;
+     IF (counter == tab2.length) THEN
+       sum = sum + tab1[i] ;
+     END_IF
+     END_IF
+ END_FOR    
+ END_FOR 
+    
+ELSE
+    set_instructions
+END_IF
+  
+END
+// version htable 
+
+ALGORITHM algorithm_htable
+VAR
+  tab1  : ARRAY_OF type[100];
+  tab2  : ARRAY_OF type[100];
+  htab : HASH_TABLE<INTEGER , INTEGER>
+  tab3  : ARRAY_OF integer[100];
+  i , j , counter: integer 
+BEGIN
+ FOR i FROM 0 TO tab1.length STEP 1 DO
+ IF (htab.lookup(tab1[i]==true)) THEN
+  counter := htab.get(tab1) ;
+  htab.insert(tab1[i] , counter +1)
+ ELSE
+ htab.lookup(tab2[i]==true))
+  counter := htab.get(tab2) ;
+  htab.insert(tab2[i] , counter +1)
+  END_IF
+  END_FOR
+  tab3:=htab.key()
+  FOR j FROM 0 TO tab3.length STEP 1 DO
+  if(htab.get(tab3[j])== 1)
+  sum = sum + tab3[j] ;
+  END_IF
+  END_FOR
+END
